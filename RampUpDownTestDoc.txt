@@ -1,0 +1,61 @@
+                               
+							test parameters:
+                  			 ------------------
+
+1. Permanent Values: 
+---------------------------
+RampRate = 1 % 
+	& does not change during the test
+
+2. Initial Conditions: 
+-------------------------------
+time_limit = not time restrictions
+Station01InputMapping.Station01PlantPrealSpt =  10
+PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt = 10
+InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk =
+	between 10 & 10.1
+
+** Note: 
+	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+		needs to be stabilized for 
+		10000 ms
+		in order for the test to continue
+
+
+3. Changing Conditions: 
+------------------------------
+
+Station01InputMapping.Station01PlantPrealSpt =  15
+
+Time allowed for 
+	PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt 
+	to reach between 14.5 & 15.5 is:
+	5000 ms
+
+Enough time is provided for 
+	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+	to reach value below (variable not tested):
+InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk =
+	 between 14.9 & 15.1
+
+ Note: 
+	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+	needs to be stabilized for 10000 ms
+	in order for the test to continue
+
+4. Final Conditions:
+----------------------------
+
+Station01InputMapping.Station01PlantPrealSpt =  0
+
+Time allowed for 
+	PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt 
+	to reach between -0.5 & 0.5 is:
+	15000 ms
+
+** Note: 
+	At this point the value of the 
+		InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+		is irrelevant for the test
+
+

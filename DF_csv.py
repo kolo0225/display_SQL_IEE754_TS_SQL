@@ -4,33 +4,31 @@
 #       exports pd.df in to CSV
 
 # Packages:
-"""
+
 import numpy as np
-"""
 import pandas as pd
 """
 # files.py
 from ImportSQliteDF import ImportsqlitelDF
 """
 # path
-#r"C:\ProgramData\CODESYS\CODESYSControlWinV3x64\94BCBDE7\PlcLogic\***.csv"         
+#r'C:\ProgramData\CODESYS\CODESYSControlWinV3x64\94BCBDE7\PlcLogic\***.csv'        
 
 # ####################################### universal variables #############################
-#
 
 # ------------- TEMP - ImportSQliteDF.py - VAR.---------- 
 """
 # ----------------- variables:
 # ImportSQliteDF:
 # ---------------
-db_name_in      = "Application.y_vs_i_vis_Trend1.1.sqlite"
-select_frase    = "SELECT * from TblTrendData"
-col_name_list   = np.array(["timestamp","y","i","N/A"])
-select_list     = np.array([0,1,1,0])     
+db_name_in      = 'Application.RampRate_Trend1.1.sqlite'
+select_frase    = 'SELECT * from TblTrendData'
+col_name_list   = np.array(['timestamp','Spt','AutoSpt','FeedBack'])
+select_list     = np.array([0,1,1,1]) 
 """
 # DF_csv.py:
 # ----------
-#path_csv        = r"C:\ProgramData\CODESYS\CODESYSControlWinV3x64\94BCBDE7\PlcLogic\trend\y_i_data.csv"
+#path_csv        = 'RampRate_data.csv'
                        
 # ------------------------------------------------------------
 
@@ -56,7 +54,8 @@ class DFtoCSV:
 """       
 # - imports df 
 obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list, select_list) 
-df                   = obj_ImportsqlitelDF.modify_df_of_ieee754_to_dec()
+df             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose time in timestamp
+#df            = obj_ImportsqlitelDF.modify_df_of_timestamp_to_count_sec()         # choose time in sec
 
 # - export to file.csv
 obj_DFtoCSV = DFtoCSV(df, path_csv)

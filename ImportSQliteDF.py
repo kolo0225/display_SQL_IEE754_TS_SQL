@@ -15,17 +15,21 @@ from time import strftime, localtime
 from IEEE754_to_decimal import IEEE754toDecimal
 
 # directory
-#r'C:\ProgramData\CODESYS\CODESYSControlWinV3x64\94BCBDE7\PlcLogic\Application.*_Trend1.1.sqlite'        
+#r'C:\Users\AE_Controls\Desktop\ramprate_test_data\Application.*_Trend1.1.sqlite'        
 
 # ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 # #######################################  variables #############################
 # ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 """
-db_name_in      = "Application.y_vs_i_vis_Trend1.1.sqlite"
-select_frase    = "SELECT * from TblTrendData"
-col_name_list   = np.array(["timestamp","y","i","N/A"])
-select_list     = np.array([0,1,1,0])                
+# ImportSQliteDF:
+# ---------------
+db_name_in      = 'Application.RampRate_Trend1.1.sqlite'
+select_frase    = 'SELECT * from TblTrendData'
+col_name_list   = np.array(['timestamp','Spt','AutoSpt','FeedBack'])
+select_list     = np.array([0,1,1,1]) 
 """
+      
+
 # ----------------------------------------------------------------
 """<-----------------|Start Comment|
 """# <-----------------|End Comment|
@@ -43,6 +47,33 @@ class ImportsqlitelDF:
         self.select_list        = select_list
         
 	# --------------------- Top Bottom design -------------------
+	# creates a modified df with count instead of timestamp
+    def modify_df_of_timestamp_to_count_sec(self):
+       
+        df           = self.modify_df_of_ieee754_to_dec()
+        array_of_col = df.columns.to_numpy()
+        
+        col_array      = df[array_of_col[0]].to_numpy()
+        col_array_time = np.array([])
+       
+        # --
+        # if you want seconds rathter than TimeStamp
+        # -------------------------------------------
+        start_time     = col_array[0]/1e+6
+        for index, val_time in enumerate(col_array):
+             
+            if index == 0:
+                col_array_time = np.append(col_array_time, start_time/start_time)
+            else:
+                val_time = (val_time/1e+6) - start_time
+                col_array_time = np.append(col_array_time, val_time)
+        # -- 
+        
+        df[array_of_col[0]] = col_array_time
+        #print(df[array_of_col[index]])
+             
+        return df 
+    
     
     # creates a modified df with readable time instead of timestamp
     def modify_df_of_timestamp_to_time(self):
@@ -50,20 +81,23 @@ class ImportsqlitelDF:
         df           = self.modify_df_of_ieee754_to_dec()
         array_of_col = df.columns.to_numpy()
         
-        col_array = df[array_of_col[0]].to_numpy()
+        col_array      = df[array_of_col[0]].to_numpy()
         col_array_time = np.array([])
-                
+        
+        # -
+        # if you TimeStamp
+        # -----------------
         for val_time in col_array:
-            
+           
             val_time = val_time/1e+6
             str_time = strftime('%Y-%m-%d %H:%M:%S', localtime(val_time))
             #print(str_time)
             col_array_time = np.append(col_array_time, str_time)
-            # -
-                 
+        # -
+       
         df[array_of_col[0]] = col_array_time
         #print(df[array_of_col[index]])
-                
+             
         return df 
     
     
@@ -140,13 +174,13 @@ obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list
 #df             = obj_ImportsqlitelDF.df_ ()
 #df             = obj_ImportsqlitelDF.rename_col_df()
 #df             = obj_ImportsqlitelDF.modify_df_of_ieee754_to_dec()
-df             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()
-
-    
+df              = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose TimeStamp
+#df              = obj_ImportsqlitelDF.modify_df_of_timestamp_to_count_sec()        # choose time in sec
+ 
 pd.options.display.float_format = '{:.0f}'.format
 print (df.shape)
 print (df.columns)
 print (df.head(5))
 print (df.tail(5))
-print (df.describe())
+#print (df.describe())
 """

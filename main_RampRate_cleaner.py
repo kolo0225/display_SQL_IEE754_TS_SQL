@@ -15,7 +15,9 @@ import pandas as pd
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.units import inch              # (8.5* inch, 11 * inch)
 from reportlab.lib.pagesizes import LETTER
-from reportlab.lib.colors import blue, green, red, black
+from reportlab.lib.colors import red, orange, orangered,  green, darkcyan, blue, darkblue, darkslateblue, darkslategray, black
+from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER, TA_JUSTIFY
+
 
 
 
@@ -24,7 +26,8 @@ from ImportSQliteDF import ImportsqlitelDF
 from DF_csv import DFtoCSV
 from DF_sql_table import DfSqlTable
 from graph import Display
-from text_to_pdf_v2 import TextProcessorToPDF
+from paragraph_story_v3 import ParagraphTCOStory
+from build_pdf_v4 import PDF_Buider
 from DirectoriesControl import DirectoryFileManager
 
 
@@ -104,85 +107,73 @@ num_display = 20          # how mamy entries the x-axis will display for clarity
 # output file.png
 output_graph_file = 'ramp_rate_plot.png'   
 
-# ---> text_to_pdf
+# ---> paragraph_story
 #      -----------
-# files want to add in the result page:
+# date time for title_pdf
 current_date = datetime.now()
 date_str     = current_date.strftime('%m/%d/%y %H:%M:%S')
 
-#                               Write Files
+# title -> this is a separtate input list
+title0 =  'The Result of all Tests:'
+title1 =  date_str
+title_list = [title0, title1]
 
-# 'title_file.txt'
-# This file name for title SHOULD NOT CHANGES
-title_list = ['title_file.txt', 
-                '',
-                '*******************************',
-                'Test: Temp_Real Power Ramp Rate',
-                 date_str,
-                 '*******************************',
-                '']
-           
-# Note:
-#   Name the file as *title_img.txt if this is a title for a plot. 
-#       This will denerate a new page that the title and the image will be placed at:
-#       in 'list_file_in' place '*title_img.txt' right in from of '\w.*png'
-# 'plot_res_intro'
-plot_res_intro_list = ['plot_res_title_img.txt', 
-                '',
-                'Plot of Test:',
-                '------------------',
-                '']
-    
-# variables
-files_to_write_list = [title_list, plot_res_intro_list]
+# title TOC
+title0 =  'Table of Contents'
+title_TOC_list = [title0]
 
-list_file_in        = ['title_file.txt','RampUpDownTestDoc.txt', 'RampUpDownStopwatch.log',
-                       'plot_res_title_img.txt', 'ramp_rate_plot.png']
+# string and files.txt -> 1st list in list_2d_in
+text0 =  'Test: Preal Ramp Rate'                 # Each Test should start with 'Test: '
+text1 =  'These are the parameters of the test'
+text2 =  'RampUpDownTestDoc.txt'
+text3 =  'time logs for the Preal Ramp test'
+text4 =  'RampUpDownStopwatch.txt'
+text_list = [text0, text1, text2, text3, text4]
+# image -> 2nd list in list_2d_in
+image0  = 'ramp_rate_plot.png'
+image_list = [image0]
 
-output_file_pdf     = 'RampRateTestResults.pdf'
+# 2d image and strings/file.txt
+list_2d_in  = [text_list, image_list]
 
 # varibles on pdf apperance:
 # size of text
-size_text_char       = 10
-size_plot_text_char  = 14
+size_text_char       = 12
+size_plot_sub_char   = 14
+size_plot_main_char  = 18
+size_title_TOC_char  = 20
 size_title_text_char = 20
-size_char_list = [size_text_char,size_plot_text_char,size_title_text_char ]
+size_char_list = [size_text_char, size_plot_sub_char, size_plot_main_char, size_title_TOC_char, size_title_text_char ]
+# line spacer (fonr_size <= spacer)
+line_splacer_text       = 20
+line_splacer_plot_sub   = 20
+line_splacer_plot_main  = 20
+line_splacer_TOC_text   = 24
+line_splacer_title_text = 40
+line_splacer_list = [line_splacer_text, line_splacer_plot_sub, line_splacer_plot_main, line_splacer_TOC_text, line_splacer_title_text]
 # font type
-font_type_text       = "Helvetica"
-font_type_plot_text  = "Times-Bold"
-font_type_title_text = "Times-Bold"
-font_type_list = [font_type_text, font_type_plot_text, font_type_title_text]
+font_type_text       = 'Helvetica'
+font_type_plot_sub   = 'Courier'
+font_type_plot_main  = 'Courier'
+font_type_TOC_text   = 'Times'
+font_type_title_text = 'Times-Bold'
+font_type_list = [font_type_text, font_type_plot_sub, font_type_plot_main, font_type_TOC_text, font_type_title_text]
 # font color
-color_text       = blue
-color_plot_text  = green
-color_title_text = black
-color_list = [color_text, color_plot_text, color_title_text]
-
-# text (from the left)
-text_position_L    = 1 * inch
-plot_position_L    = 3 * inch
-title_position_L   = 2 * inch
-text_position_list_L = [text_position_L, plot_position_L, title_position_L]
-# text (from the bottom)
-text_position_B    = 10 * inch 
-plot_position_B    = 10 * inch 
-title_position_B   = 10 * inch 
-text_position_list_B = [text_position_B, plot_position_B, title_position_B]
-
-line_splacer_text       = 0.5
-line_splacer_plot_text  = 0.5
-line_splacer_title_text = 0.5
-line_splacer_list = [line_splacer_text,line_splacer_plot_text, line_splacer_title_text]
-
+color_text       = black
+color_plot_sub   = black
+color_plot_main  = black
+color_TOC_text   = darkslategray
+color_title_text = darkslategray
+color_list = [color_text, color_plot_sub, color_plot_main, color_TOC_text, color_title_text]
+# alignment 
+alignment_text       = TA_LEFT
+alignment_plot_sub   = TA_LEFT
+alignment_plot_main  = TA_LEFT
+alignment_TOC_text   = TA_LEFT
+alignment_title_text = TA_CENTER
+alignment_list = [alignment_text, alignment_plot_sub, alignment_plot_main, alignment_TOC_text, alignment_title_text]
 
 # image parameters 
-# position (from the left)
-x_plot_image   = 1 * inch
-x_image_list   = [x_plot_image]
-# (from the bottom)
-y_plot_image   = 3 * inch
-y_image_list   = [y_plot_image]
-
 # size
 # width 
 image_plot_width  = 6 * inch
@@ -191,6 +182,9 @@ image_width_list  = [image_plot_width]
 image_plot_height  = 6 * inch
 image_height_list  = [image_plot_height]
 
+# ---> build_pdf
+#      -----------
+file_out = 'RampRateTestResults.pdf'
 
 # ---> DirectoriesControl
 dir_name             = '\\RampRateTest_'
@@ -210,6 +204,7 @@ file_ps1_2       = "\\sftp_ls_RampRate_sqliteDeleter.ps1"
 # ########################################################################################
 # ----------------- call classes
 """
+# this code is not provided here and is not needed for this example
 # powershell files "sftp_downloading_RampRate_files.ps1"
 # file -> should should be different for each test case
 pwsh_path_file_1 = dir_pwsh+file_ps1_1
@@ -247,15 +242,20 @@ obj_Display.multiple_line_plots()
 # -
 
 # ---
-# text_to_pdf
-obj_TextProcessorToPDF  = TextProcessorToPDF(files_to_write_list, list_file_in, size_char_list, font_type_list, 
-        color_list, text_position_list_L, text_position_list_B, line_splacer_list, 
-        x_image_list, y_image_list, image_width_list, image_height_list, output_file_pdf)
-                                                
-obj_TextProcessorToPDF.file_writer()
-obj_TextProcessorToPDF.main_creates_pdf()
+# paragraph_story
+obj_ParagraphTCOStory = ParagraphTCOStory( title_list, title_TOC_list, list_2d_in, size_char_list, 
+        line_splacer_list,font_type_list, alignment_list, color_list, image_width_list, image_height_list)
+
+Story = obj_ParagraphTCOStory.bodyNimages()
 # -
 
+# ---
+# buid_pdf
+obj_PDF_Buider = PDF_Buider(file_out)
+doc = obj_PDF_Buider.multiBuild(Story)
+# -
+"""
+# uncomment if you wish to create a TimeStamp_file with the results in
 # ---
 # DirectoriesControl
 obj_DirectoryFileManager = DirectoryFileManager(dir_name, list_tobe_copied, list_tobe_invoked) 
@@ -263,6 +263,8 @@ obj_DirectoryFileManager.invoke_files_selected()
 obj_DirectoryFileManager.zip_directory()
 # -
 """
+"""
+# this code is not provided here and is not needed for this example
 # ---
 # powershell files "sftp_ls_RampRate_sqliteDeleter.ps1"
 # file -> should should be different for each test case

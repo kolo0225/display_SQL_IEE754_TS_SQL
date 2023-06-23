@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset='utf-8' />
+<title>Report - PRealRampRataIncrDecrTest (0.0)</title>
+			<style type="text/css">
+				body { font-family: Arial; font-size: x-small; }
+				input { font-size: x-small; margin: 0.25em 0px; }
+				h2 { text-align: center; font-size: 120%; }
+				h3 { font-size: 110%; text-decoration: underline; }
+				table { font-size: 1em; margin: 0px; padding: 0px 0px 0px 1em; border-collapse: collapse; }
+				table tr { font-size: 1em; margin: 0px; padding: 0px 0px 0px 1em; vertical-align: top; }
+				table.listing,table.listing tr,table.listing td,table.listing th { border: solid 1px; padding: 2px; marging: 2px; border-color: gray; }
+				ul { margin : 0; list-style-type: disc; }
+				.failed { color: red; font-style: normal; font-weight: bold; }
+				.err_ignored { color: orange; font-style: normal; font-weight: bold; }
+				.succeeded { color: green; font-style: normal; font-weight: bold; }
+				.commented_out { color: darkgray; font-style: italic; font-weight: bold; }
+				.commented_out_li { color: darkkhaki; font-style: italic; }
+				dl { margin : 0; }
+				dt { float: left; clear: left; font-weight: bold; padding-right: 0.5em; } 
+				dt:after { content: ":"; } 
+				dd { margin: 0; padding: 0; }	
+				div { font-size: x-small; }
+				.code_assignment { font-family:'Consolas', 'Lucida Console', 'Courier New', monospace; color: black;}
+				.code_params { font-family:'Consolas', 'Lucida Console', 'Courier New', monospace; color: black;}
+				.code_literal { font-family:'Consolas', 'Lucida Console', 'Courier New', monospace; color: brown;}
+				@media print {
+					input { display: none; }
+				}
+			</style>
+<script type='text/javascript'>/* <![CDATA[ */ var CODESYS = CODESYS || {};
+CODESYS.TestManager = function () {
+	function q(a, b) {
+		var c, d;
+		d = [];
+		for (c = 0; c < a.length; c += 1) b(a[c]) && d.push(a[c]);
+		return d
+	}
+
+	function k(a, b) {
+		var c;
+		for (c = 0; c < a.length; c += 1) b(a[c])
+	}
+
+	function C(a, b) {
+		a.parentNode.replaceChild(b, a);
+		b.appendChild(a)
+	}
+
+	function D(a, b) {
+		return q(a.childNodes, function (a) {
+			return a.className === b
+		})
+	}
+
+	function u(a, b, c) {
+		c || (c = []);
+		a.nodeType === h && a.className === b && c.push(a);
+		(a = a.childNodes) && k(a, function (a) {
+			u(a, b, c)
+		});
+		return c
+	}
+
+	function v(a) {
+		if (!a || a.nodeType !== h) return !1;
+		a = a.nodeName.toLowerCase();
+		return "ul" === a || "ol" === a || "li" === a
+	}
+
+	function E(a) {
+		do a = a.nextSibling; while (a && !v(a));
+		return a
+	}
+
+	function F(a) {
+		var b = [];
+		a && a.hasChildNodes && (b = q(a.childNodes, v));
+		return b
+	}
+
+	function l(a, b) {
+		var c;
+		b || (b = function (a) {
+			return "none" === a.style.display
+		});
+		c = D(a.parentNode, m);
+		0 < c.length && (c = c[0], b(c) ? (c.style.display = "", a.innerHTML = n) : (c.style.display = "none", a.innerHTML = w));
+		return !1
+	}
+
+	function p(a, b) {
+		var c;
+		c = a.childNodes;
+		0 < c.length && k(c, function (a) {
+			p(a, b)
+		});
+		a.className === f && l(a.firstChild, b)
+	}
+
+	function x(a) {
+		var b;
+		a.className === f && l(a.firstChild, r);
+		(b = a.parentNode) && b.nodeType === h && "body" !== b.tagName.toLowerCase() && x(a.parentNode)
+	}
+
+	function G(a) {
+		var b = a.childNodes;
+		for (a = 0; a < b.length; a++)
+			if ("span" === b[a].nodeName.toLowerCase() && b[a].id === y) return b[a];
+		return null
+	}
+
+	function z(a) {
+		var b, c;
+		b = F(a);
+		0 < b.length && (k(b, z), "li" === a.nodeName.toLowerCase() && (a.className === f ? b = a.firstChild : (a.className = f, b = document.createElement("span"), b.className = m, c = E(a.firstChild), C(c, b), b = document.createElement("a"), b.href = "", b.style.textDecoration = "none", c = document.createTextNode(n), b.appendChild(c), a.insertBefore(b, a.firstChild)), b.onclick = function () {
+			return l(this)
+		}));
+		if (b = G(a)) a.className === f ? b = a.firstChild : (a.className = f, b.className = m, b = document.createElement("a"), b.href = "", b.style.textDecoration = "none", c = document.createTextNode(n), b.appendChild(c), a.insertBefore(b, a.firstChild)), b.onclick = function () {
+			return l(this)
+		}
+	}
+
+	function H(a) {
+		a = u(a, A);
+		a = q(a, function (a) {
+			var c;
+			try {
+				c = a.parentNode.className === B
+			} catch (d) {
+				c = !1
+			}
+			return !c
+		});
+		k(a, x)
+	}
+	
+	function intiallyHideParams() {
+		var vars = document.querySelectorAll('.code_params'), i;
+		for (var i = 0; i < vars.length; i++) {
+			vars[i].style.display = 'none';
+		}
+	}	
+	
+	var e, n, w, f, m, A, B, h, r, t, g, y, v;
+	n = "[-] ";
+	w = "[+] ";
+	f = "collapsableListEntry";
+	m = "collapsableContent";
+	A = "failed";
+	B = "TestAction";
+	h = 1;
+	r = function () {
+		return !0
+	};
+	t = function () {
+		return !1
+	};
+	y = "additionalInformation";
+	return {
+		collapseAll: function () {
+			p(e, t)
+		},
+		expandAll: function () {
+			p(e, r)
+		},
+		collapseSucceeded: function () {
+			p(e, t);
+			H(e)
+		},
+		showDiv: function () {
+			var a = g;
+			"div" === a.nodeName.toLowerCase() && (a.style.display = "flex")
+		},
+		hideDiv: function () {
+			var a = g;
+			"div" === a.nodeName.toLowerCase() && (a.style.display = "none")
+		},
+		showParams: function () {
+			var vars = document.querySelectorAll('.code_params'), i;
+			for (var i = 0; i < vars.length; i++) {
+				vars[i].style.display = '';
+			}
+		},
+		hideParams: function () {
+			var vars = document.querySelectorAll('.code_params'), i;
+			for (var i = 0; i < vars.length; i++) {
+				vars[i].style.display = 'none';
+			}
+		},
+		init: function () {
+			var a;
+			a = document.getElementById("expandCollapseButtons");
+			e = a.nextSibling;
+			3 === e.nodeType && (e = e.nextSibling);
+			z(e);
+			a.style.display = "";
+			if (a = document.getElementById("versionTableButtons")) g = a.nextSibling, 3 === g.nodeType && (g = g.nextSibling), a.style.display = "";
+			a = window.location.href;
+			if (window.location.hash) {
+				var b = a.lastIndexOf("#");
+				a = a.substring(0, b)
+			}
+			if (b = document.getElementById("GlobalAnchors"))
+				for (var c = b.childNodes, d = 0; d < c.length; d += 1) c[d].nodeType === h && "a" === c[d].nodeName.toLowerCase() && (b = c[d].href.lastIndexOf("#"), -1 < b && (c[d].href = a + c[d].href.substring(b)))
+			intiallyHideParams();
+		}
+	}
+}();
+window.onload = CODESYS.TestManager.init; /* ]]> */</script>
+</head>
+<body>
+<p id="GlobalAnchors"><a href="#Summary">Summary</a>&nbsp;&nbsp;<a href="#Details">Details</a></p>
+<h2>Overview</h2>
+<div style="width:100%; margin:5px;">
+<table border="0"><colgroup><col style="font-weight:bold;" /><col /></colgroup><tr><td>Date</td><td>6/9/2023 10:33 AM</td></tr><tr><td>Script</td><td>PRealRampRataIncrDecrTest (0.0)</td></tr><tr><td>Tester</td><td>AE_Controls</td></tr><tr><td>Test settings:</td><td>Verbose; </td></tr></table></div><h2 id="Summary">Summary</h2>
+<table border="0" style="width:100%;"><tr><td style="margin:0px; padding:0px; width:100%;background-color:#00FF00;">&nbsp;</td><!-- 0 --><!-- 0 --></tr></table><div style="width:100%; margin:5px; display:flex; justify-content:center;">
+<table style="width:100%" border="0"><colgroup><col style="font-weight:bold;width:10%;padding-right:5px;" /><col /></colgroup><tr><td>Total test cases</td><td>22</td></tr><tr><td>Succeeded</td><td>22</td></tr><tr><td>Failed</td><td>0</td></tr><tr><td>Skipped</td><td>0</td></tr><table style="width:100%" border="0"><colgroup><col style="font-weight:bold;width:10%;padding-right:5px;" /><col /></colgroup><tr><td>Execution time</td><td>00:06:15.4092622</td></tr><tr><td>Pinned scripts</td><td>0/20</td></tr></table></div><h2 id="VersionInformation">Version information</h2>
+<span id="versionTableButtons" style="display:none">
+<input type="button" onclick="CODESYS.TestManager.showDiv();return false;" value="Show" />
+<input type="button" onclick="CODESYS.TestManager.hideDiv();return false;" value="Hide" />
+</span>
+<div style="display:none; justify-content:center">
+<div style="width:100%;margin:5px;">
+<table border="1" style="width:100%">
+<colgroup span="2"><col style="width:80%" /><col /></colgroup>
+<tr><th>Effektiv aufgerufene Skripte</th><th>Version</th><th>Pinned</th></tr>
+<tr>
+<td>DocumentationTest.appends_file_delta_1</td><td>0.0</td><td></td></tr>
+<tr>
+<td>DocumentationTest.appends_file_final</td><td>0.0</td><td></td></tr>
+<tr>
+<td>DocumentationTest.check_dir_create_file</td><td>0.0</td><td></td></tr>
+<tr>
+<td>ExecuteFromWorkingDir.PowerShell</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniCondPDCPreal</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniCondPDCQreactive</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniCondSim</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniCondSimPre</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniPID</td><td>0.0</td><td></td></tr>
+<tr>
+<td>IniConditions.SetIniRealToPercent</td><td>0.0</td><td></td></tr>
+<tr>
+<td>PRealRampRataIncrDecrTest</td><td>0.0</td><td></td></tr>
+<tr>
+<td>PreScriptVariables.PreScript1Vars</td><td>0.0</td><td></td></tr>
+<tr>
+<td>RampRateTestDeltaBlck.TestRampRateDeltaBlck</td><td>0.0</td><td></td></tr>
+<tr>
+<td>RampRateTestFinalBlck.TestRampRateFinalBlck</td><td>0.0</td><td></td></tr>
+<tr>
+<td>RampRateTestIniBlck.TestRampRateIniBlck</td><td>0.0</td><td></td></tr>
+<tr>
+<td>ReadPPCVars.ReadRampRate</td><td>0.0</td><td></td></tr>
+<tr>
+<td>RecordingData.WrtieTimerLog</td><td>0.0</td><td></td></tr>
+<tr>
+<td>TrendTool.TrendEnds</td><td>0.0</td><td></td></tr>
+<tr>
+<td>TrendTool.TrendStarts</td><td>0.0</td><td></td></tr>
+<tr>
+<td>VeriablesPaths.Paths</td><td>0.0</td><td></td></tr>
+</table>
+</div>
+</div>
+<h2 id="Details">Details</h2>
+<span id="expandCollapseButtons" style="display:none">
+<input type="button" onclick="CODESYS.TestManager.collapseAll();return false;" value="Collapse all" />
+<input type="button" onclick="CODESYS.TestManager.collapseSucceeded();return false;" value="Collapse succeeded" />
+<input type="button" onclick="CODESYS.TestManager.expandAll();return false;" value="Expand all" />
+<input type="button" onclick="CODESYS.TestManager.showParams();return false;" value="Show parameters" />
+<input type="button" onclick="CODESYS.TestManager.hideParams();return false;" value="Hide parameters" />
+</span>
+<ul>
+<li class="">PRealRampRataIncrDecrTest [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">loging_in - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: log_in_test - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.percent_ini := <em class="code_literal">10</em></em></li>
+<div class="code_params"> $GLOBALS.percent_ini &#x25BA; <em class="code_literal">10</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.change := <em class="code_literal">0</em></em></li>
+<div class="code_params"> $GLOBALS.change &#x25BA; <em class="code_literal">0</em></div><li class="">VeriablesPaths.Paths [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.ProjectPath := <em class="code_literal">"CODESYS_Control_Win_V3_x64.Application."</em></em></li>
+<div class="code_params"> $GLOBALS.ProjectPath &#x25BA; <em class="code_literal">CODESYS_Control_Win_V3_x64.Application.</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PPCPerVarStaPlntType1Path := <em class="code_literal">"PPCPersistentVariables.StationPlantTypes[1]."</em></em></li>
+<div class="code_params"> $GLOBALS.PPCPerVarStaPlntType1Path &#x25BA; <em class="code_literal">PPCPersistentVariables.StationPlantTypes[1].</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathPlantPrealSpt := <em class="code_literal">"Station01InputMapping.Station01PlantPrealSpt"</em></em></li>
+<div class="code_params"> $GLOBALS.PathPlantPrealSpt &#x25BA; <em class="code_literal">Station01InputMapping.Station01PlantPrealSpt</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathPrealAutoSpt := <em class="code_literal">"PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt"</em></em></li>
+<div class="code_params"> $GLOBALS.PathPrealAutoSpt &#x25BA; <em class="code_literal">PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathPrealFbk := <em class="code_literal">"InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk"</em></em></li>
+<div class="code_params"> $GLOBALS.PathPrealFbk &#x25BA; <em class="code_literal">InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathPrealSptRampRate := <em class="code_literal">"Station01InputMapping.Station01PlantPrealSptRampRate"</em></em></li>
+<div class="code_params"> $GLOBALS.PathPrealSptRampRate &#x25BA; <em class="code_literal">Station01InputMapping.Station01PlantPrealSptRampRate</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.Path_P_Rated := <em class="code_literal">"PPCPersistentVariables.POIMeterTypeConfigs[PPCPersistentVariables.POIMeterInUse].PRealRated"</em></em></li>
+<div class="code_params"> $GLOBALS.Path_P_Rated &#x25BA; <em class="code_literal">PPCPersistentVariables.POIMeterTypeConfigs[PPCPersistentVariables.POIMeterInUse].PRealRated</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.Absolute_PRG_A := <em class="code_literal">"Absolute_PRG.A"</em></em></li>
+<div class="code_params"> $GLOBALS.Absolute_PRG_A &#x25BA; <em class="code_literal">Absolute_PRG.A</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.Absolute_PRG_res := <em class="code_literal">"Absolute_PRG.res"</em></em></li>
+<div class="code_params"> $GLOBALS.Absolute_PRG_res &#x25BA; <em class="code_literal">Absolute_PRG.res</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathStartTrace := <em class="code_literal">"TraceVar.StartTrace"</em></em></li>
+<div class="code_params"> $GLOBALS.PathStartTrace &#x25BA; <em class="code_literal">TraceVar.StartTrace</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.dir_doc := <em class="code_literal">"C:\Users\AE_Controls\Desktop\ramprate_test_data\"</em></em></li>
+<div class="code_params"> $GLOBALS.dir_doc &#x25BA; <em class="code_literal">C:\Users\AE_Controls\Desktop\ramprate_test_data\</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.file_txt := <em class="code_literal">"RampUpDownTestDoc.txt"</em></em></li>
+<div class="code_params"> $GLOBALS.file_txt &#x25BA; <em class="code_literal">RampUpDownTestDoc.txt</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.PathLogTimerFile := <em class="code_literal">"C:\Users\AE_Controls\Desktop\ramprate_test_data\RampUpDownStopwatch.log"</em></em></li>
+<div class="code_params"> $GLOBALS.PathLogTimerFile &#x25BA; <em class="code_literal">C:\Users\AE_Controls\Desktop\ramprate_test_data\RampUpDownStopwatch.log</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.WorkingDirectory := <em class="code_literal">"C:\Users\AE_Controls\Desktop\ramprate_test_data"</em></em></li>
+<div class="code_params"> $GLOBALS.WorkingDirectory &#x25BA; <em class="code_literal">C:\Users\AE_Controls\Desktop\ramprate_test_data</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.MainPython := <em class="code_literal">"main_RampRate_cleaner.py"</em></em></li>
+<div class="code_params"> $GLOBALS.MainPython &#x25BA; <em class="code_literal">main_RampRate_cleaner.py</em></div></ol>
+</li>
+<li class="">PreScriptVariables.PreScript1Vars [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.wait_Fbk_RR_mult := <em class="code_literal">10</em></em></li>
+<div class="code_params"> $GLOBALS.wait_Fbk_RR_mult &#x25BA; <em class="code_literal">10</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.wait_Fbk_stable := <em class="code_literal">10000</em></em></li>
+<div class="code_params"> $GLOBALS.wait_Fbk_stable &#x25BA; <em class="code_literal">10000</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.wait_read := <em class="code_literal">200</em></em></li>
+<div class="code_params"> $GLOBALS.wait_read &#x25BA; <em class="code_literal">200</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.percent_max := <em class="code_literal">100</em></em></li>
+<div class="code_params"> $GLOBALS.percent_max &#x25BA; <em class="code_literal">100</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.AutoStp_plus_minus := <em class="code_literal">0.5</em></em></li>
+<div class="code_params"> $GLOBALS.AutoStp_plus_minus &#x25BA; <em class="code_literal">0.5</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.Fbk_plus_minus := <em class="code_literal">0.1</em></em></li>
+<div class="code_params"> $GLOBALS.Fbk_plus_minus &#x25BA; <em class="code_literal">0.1</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.RampRate_read := <em class="code_literal">0.0</em></em></li>
+<div class="code_params"> $GLOBALS.RampRate_read &#x25BA; <em class="code_literal">0</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.timer_log_StrEnd := <em class="code_literal">0.0</em></em></li>
+<div class="code_params"> $GLOBALS.timer_log_StrEnd &#x25BA; <em class="code_literal">0</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.timer_log_duration := <em class="code_literal">0.0</em></em></li>
+<div class="code_params"> $GLOBALS.timer_log_duration &#x25BA; <em class="code_literal">0</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.user_name := <em class="code_literal">"alsoenergy"</em></em></li>
+<div class="code_params"> $GLOBALS.user_name &#x25BA; <em class="code_literal">alsoenergy</em></div><li class="">Assignment - <em class="code_assignment">$GLOBALS.pass := <em class="code_literal">"alsoSCADA2007!"</em></em></li>
+<div class="code_params"> $GLOBALS.pass &#x25BA; <em class="code_literal">alsoSCADA2007!</em></div></ol>
+</li>
+<li class="">IniConditions.SetIniCondSimPre [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_cond - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: SimulationMode_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: SimulationKey_w_999 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station1SIM_w_TRUE - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">IniConditions.SetIniRealToPercent [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_RealToPercent - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: PrealInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PrealInputUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PrealDisplayUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PRealSptRampRateInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PRealSptRampRateInputUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PRealSptRampRateDisplayUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QreactiveInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QreactiveInputUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QreactiveDisplayUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QReactiveSptRampRateInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QReactiveSptRampRateInputUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QReactiveSptRampRateDisplayUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VoltageInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VoltageInputUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VoltageDisplayUnits_w_percent - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PFInputScale_w_1 - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">IniConditions.SetIniPID [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_PID - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: kp_07_w - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: ki_90_w - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">IniConditions.SetIniCondSim [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_cond_sim - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: Station01Enable_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealSpt_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealSptRampRate_w_1_4 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveSpt_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveSptRampRate_w_1_4 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantVacSpt_w_97 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPFSpt_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealSptGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealSptRampRateGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveSptGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveSptRampRateGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantVacSptGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPFSptGoto_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantMaintenance_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantShutdown_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantStandby_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantRun_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01SchedulerEn_Preal_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantDispatchEn_Preal_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantSchedulerEn_Qreactive_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantDispatchEn_Qreactive_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantSchedulerEn_Storage_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantDispatchEn_Storage_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealDisable_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealPause_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealManual_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealCurtailment_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantPrealAGC_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveDisable_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactivePause_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveManual_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveQreactive_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactiveVoltage_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01PlantQreactivePowerFactor_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01InverterPrealAuto_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Station01InverterQreactiveAuto_w_TRUE - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">IniConditions.SetIniCondPDCPreal [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_cond_preal - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: UseBlockCurtailment_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: BlockCurtailmentLimit_w_100 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseInverterMaxPowerLimit_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: InverterMaxPowerLimit_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseInverterAutoStartStop_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: InverterStopLim_w_1.2 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: InverterStartLim_w_1.5 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseAux_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: AuxIn_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: ApparentPowerCapping_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: ApparentPowerCapLimit_w_50 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseCommonModeDynLim_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseFrequencyTests_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UsePratedFreqCurve_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PratedFreqResponseTime_w_4 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseOvershootPrevention_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: OvershootPreventionHoldTime_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UsePrealFeederLimiting_w_FALSE - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">IniConditions.SetIniCondPDCQreactive [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">set_ini_cond_qreactive - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: UseQreactiveCtrl_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QreactiveDeadband_w_01 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseAVRCtrl_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: AVRSptRampRate_w_1 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: AVRDeadband_w_01 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UsePowerFactorCtrl_w_TRUE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseVoltVarCtrl_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseCapBanks_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseReactBanks_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QLimiting_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseQLimitingCurve_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QLimStaticLow_w_-40 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: QLimStaticHi_w_40 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseInverterQreactiveLimiting_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VoltageLimiting_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseVoltageLimitingCurves_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VLimStaticLow_w_97 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: VLImStaticHi_w_103 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseInverterVoltageLimiting_w_FALSE - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PowerFactorLimiting_w_0 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PFLimStaticLow_w_-095 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: PFLimStaticHi_w_095 - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: UseQreactiveFeederLimiting_w_FALSE - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">RecordingData.WrtieTimerLog [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">WriteTimerLog - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: write_file_log - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">ReadPPCVars.ReadRampRate [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">RampRate - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: RampRate_read_var - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.RampRate_read &lt;= $GLOBALS.RampRate_read &#x25BA; <em class="code_literal">0</em></div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">TrendTool.TrendStarts [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">TrendToolStart - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: trend_start - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">RampRateTestIniBlck.TestRampRateIniBlck [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.wait_AutoStp_ini := <em class="code_literal">($GLOBALS.percent_max/$GLOBALS.RampRate_read)*1000</em></em></li>
+<div class="code_params"> $GLOBALS.wait_AutoStp_ini &#x25BA; <em class="code_literal">100000</em></div><div class="code_params">$GLOBALS.percent_max &#x25BA; <em class="code_literal">100</em></div>
+<div class="code_params">$GLOBALS.RampRate_read &#x25BA; <em class="code_literal">1</em></div>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.wait_Fbk_ini := <em class="code_literal">($GLOBALS.wait_Fbk_RR_mult*($GLOBALS.percent_max/$GLOBALS.RampRate_read))*1000</em></em></li>
+<div class="code_params"> $GLOBALS.wait_Fbk_ini &#x25BA; <em class="code_literal">1000000</em></div><div class="code_params">$GLOBALS.wait_Fbk_RR_mult &#x25BA; <em class="code_literal">10</em></div>
+<div class="code_params">$GLOBALS.percent_max &#x25BA; <em class="code_literal">100</em></div>
+<div class="code_params">$GLOBALS.RampRate_read &#x25BA; <em class="code_literal">1</em></div>
+<li class="">ramp_test_initial_set_unit - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: Spt_write - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: AutoSpt_compare - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Fbk_compare - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Fbk_stable_wait - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">DocumentationTest.check_dir_create_file [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">starts_dir_file - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: DirIsThere - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: file_create - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.percent_ini := <em class="code_literal">$GLOBALS.percent_ini+$GLOBALS.change</em></em></li>
+<div class="code_params"> $GLOBALS.percent_ini &#x25BA; <em class="code_literal">10</em></div><div class="code_params">$GLOBALS.percent_ini &#x25BA; <em class="code_literal">10</em></div>
+<div class="code_params">$GLOBALS.change &#x25BA; <em class="code_literal">0</em></div>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.change := <em class="code_literal">5</em></em></li>
+<div class="code_params"> $GLOBALS.change &#x25BA; <em class="code_literal">5</em></div><li class="">RampRateTestDeltaBlck.TestRampRateDeltaBlck [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">abs_val - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: change_w - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: wait_r - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: abs_r - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.percent_change &lt;= $GLOBALS.percent_change &#x25BA; <em class="code_literal">&lt;&lt;null&gt;&gt;</em></div>
+</li>
+</ol>
+</li>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.time_ramp_delta := <em class="code_literal">($GLOBALS.percent_change/$GLOBALS.RampRate_read)*1000</em></em></li>
+<div class="code_params"> $GLOBALS.time_ramp_delta &#x25BA; <em class="code_literal">5000</em></div><div class="code_params">$GLOBALS.percent_change &#x25BA; <em class="code_literal">5</em></div>
+<div class="code_params">$GLOBALS.RampRate_read &#x25BA; <em class="code_literal">1</em></div>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.new_stp_prercent := <em class="code_literal">$GLOBALS.percent_ini+$GLOBALS.change</em></em></li>
+<div class="code_params"> $GLOBALS.new_stp_prercent &#x25BA; <em class="code_literal">15</em></div><div class="code_params">$GLOBALS.percent_ini &#x25BA; <em class="code_literal">10</em></div>
+<div class="code_params">$GLOBALS.change &#x25BA; <em class="code_literal">5</em></div>
+<li class="">ramp_test_delta_unit - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: Spt_write - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: change_timer_start - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.timer_log_StrEnd &lt;= $GLOBALS.timer_log_StrEnd &#x25BA; <em class="code_literal">0</em></div>
+</li>
+<li class="Test action ">Action: AutoSpt_compare - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: change_timer_stop - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.timer_log_StrEnd &lt;= $GLOBALS.timer_log_StrEnd &#x25BA; <em class="code_literal">38.18.094</em></div>
+<div class="code_params">$GLOBALS.timer_log_duration &lt;= $GLOBALS.timer_log_duration &#x25BA; <em class="code_literal">0</em></div>
+</li>
+<li class="Test action ">Action: Fbk_compare - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: Fbk_stable_wait - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">DocumentationTest.appends_file_delta_1 [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">cont_file - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: file_create - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.percent_ini := <em class="code_literal">$GLOBALS.percent_ini+$GLOBALS.change</em></em></li>
+<div class="code_params"> $GLOBALS.percent_ini &#x25BA; <em class="code_literal">20</em></div><div class="code_params">$GLOBALS.percent_ini &#x25BA; <em class="code_literal">15</em></div>
+<div class="code_params">$GLOBALS.change &#x25BA; <em class="code_literal">5</em></div>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.change := <em class="code_literal">-15</em></em></li>
+<div class="code_params"> $GLOBALS.change &#x25BA; <em class="code_literal">-15</em></div><li class="">RampRateTestFinalBlck.TestRampRateFinalBlck [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">abs_val - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: change_w - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: wait_r - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: abs_r - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.percent_change &lt;= $GLOBALS.percent_change &#x25BA; <em class="code_literal">5</em></div>
+</li>
+</ol>
+</li>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.time_ramp_delta := <em class="code_literal">($GLOBALS.percent_change/$GLOBALS.RampRate_read)*1000</em></em></li>
+<div class="code_params"> $GLOBALS.time_ramp_delta &#x25BA; <em class="code_literal">15000</em></div><div class="code_params">$GLOBALS.percent_change &#x25BA; <em class="code_literal">15</em></div>
+<div class="code_params">$GLOBALS.RampRate_read &#x25BA; <em class="code_literal">1</em></div>
+<li class="">Assignment - <em class="code_assignment">$GLOBALS.new_stp_prercent := <em class="code_literal">$GLOBALS.percent_ini+$GLOBALS.change</em></em></li>
+<div class="code_params"> $GLOBALS.new_stp_prercent &#x25BA; <em class="code_literal">0</em></div><div class="code_params">$GLOBALS.percent_ini &#x25BA; <em class="code_literal">15</em></div>
+<div class="code_params">$GLOBALS.change &#x25BA; <em class="code_literal">-15</em></div>
+<li class="">ramp_test_final_unit - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: Spt_write - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: change_timer_start - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.timer_log_StrEnd &lt;= $GLOBALS.timer_log_StrEnd &#x25BA; <em class="code_literal">38.22.841</em></div>
+</li>
+<li class="Test action ">Action: AutoSpt_compare - <em class="succeeded">Succeeded</em></li>
+<li class="Test action ">Action: change_timer_stop - <em class="succeeded">Succeeded</em><div class="code_params">$GLOBALS.timer_log_StrEnd &lt;= $GLOBALS.timer_log_StrEnd &#x25BA; <em class="code_literal">39.19.548</em></div>
+<div class="code_params">$GLOBALS.timer_log_duration &lt;= $GLOBALS.timer_log_duration &#x25BA; <em class="code_literal">04.746</em></div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">DocumentationTest.appends_file_final [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">cont_file - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: file_create - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">TrendTool.TrendEnds [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">TrendToolEnd - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: trend_end - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">ExecuteFromWorkingDir.PowerShell [0.0]  - <em class="succeeded">Succeeded</em><ol>
+<li class="">FinalWait - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: final_wait - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+<li class="">execute_python - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: execute_main_python - <em class="succeeded">Succeeded</em><br /><span id="additionalInformation">powershell.exe py main_RampRate_cleaner.py [C:\Users\AE_Controls\Desktop\ramprate_test_data]
+</span></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">loging_out - <em class="succeeded">Succeeded</em><ol>
+<li class="Test action ">Action: log_out_test - <em class="succeeded">Succeeded</em></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</body>
+</html>

@@ -10,13 +10,8 @@
 import os
 import shutil
 from datetime import datetime
-"""
-# -- variables:
-# file list to be copied
-dir_name             = '\\RampRateTest_'
-list_tobe_copied     = ['RampRate_data.csv', 'corrected_RampRate_data.sqlite', 'RampRateTestResults.pdf', 'PRealRampRataIncrDecrTest.html']
-list_tobe_invoked    = ['RampRateTestResults.pdf', 'PRealRampRataIncrDecrTest.html']
-"""
+
+# ===========================================================================
 class DirectoryFileManager:
     
     def __init__ (self, dir_name, list_tobe_copied, list_tobe_invoked):
@@ -62,10 +57,3 @@ class DirectoryFileManager:
         #print("directory is ready")
         
         return dir_full_path
-"""
-obj_DirectoryFileManager = DirectoryFileManager(dir_name, list_tobe_copied, list_tobe_invoked)       
-#obj_DirectoryFileManager.create_directory()
-#obj_DirectoryFileManager.copy_files_to_directory()
-obj_DirectoryFileManager.invoke_files_selected()
-obj_DirectoryFileManager.zip_directory()
-"""

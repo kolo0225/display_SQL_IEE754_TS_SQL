@@ -6,11 +6,7 @@
 # packages:
 import numpy as np
 
-# variable
-"""
-num_d_ieee = [1056964608,1069547520,1075838976,1080033280,1083179008,1084227584]
-"""
-
+# =======================================================
 class IEEE754toDecimal:
 
     def __init__(self, num_d_ieee):
@@ -101,20 +97,3 @@ class IEEE754toDecimal:
         #print(sign)
         return sign
 
-#obj_IEEE754toDecimal    = IEEE754toDecimal(num_d_ieee)
-#obj_IEEE754toDecimal.fn_sign()
-#obj_IEEE754toDecimal.fn_prep_exponent ()
-#obj_IEEE754toDecimal.fn_exponent()
-#obj_IEEE754toDecimal.fn_mantissa()
-#obj_IEEE754toDecimal.fn_main()
-
-"""
-for index in range(len(num_d_ieee)):
-
-    obj_IEEE754toDecimal    = IEEE754toDecimal(num_d_ieee[index])
-    #obj_IEEE754toDecimal.fn_sign()
-    #obj_IEEE754toDecimal.fn_prep_exponent ()
-    #obj_IEEE754toDecimal.fn_exponent()
-    #obj_IEEE754toDecimal.fn_mantissa()
-    obj_IEEE754toDecimal.fn_main()
-"""

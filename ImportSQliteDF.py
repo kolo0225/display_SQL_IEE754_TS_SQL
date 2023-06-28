@@ -14,25 +14,7 @@ from time import strftime, localtime
 # files.py
 from IEEE754_to_decimal import IEEE754toDecimal
 
-# directory
-#r'C:\Users\AE_Controls\Desktop\ramprate_test_data\Application.*_Trend1.1.sqlite'        
-
-# ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-# #######################################  variables #############################
-# ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-"""
-# ImportSQliteDF:
-# ---------------
-db_name_in      = 'Application.RampRate_Trend1.1.sqlite'
-select_frase    = 'SELECT * from TblTrendData'
-col_name_list   = np.array(['timestamp','Spt','AutoSpt','FeedBack'])
-select_list     = np.array([0,1,1,1]) 
-"""
-      
-
 # ----------------------------------------------------------------
-"""<-----------------|Start Comment|
-"""# <-----------------|End Comment|
 class ImportsqlitelDF:
 
     def __init__(self, db_name, select_frase, col_name_list, select_list): 
@@ -164,23 +146,3 @@ class ImportsqlitelDF:
 
         return df
         
-     
-
-# ----------------------------------------------------------------
-
-"""
-obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list, select_list) 
-
-#df             = obj_ImportsqlitelDF.df_ ()
-#df             = obj_ImportsqlitelDF.rename_col_df()
-#df             = obj_ImportsqlitelDF.modify_df_of_ieee754_to_dec()
-df              = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose TimeStamp
-#df              = obj_ImportsqlitelDF.modify_df_of_timestamp_to_count_sec()        # choose time in sec
- 
-pd.options.display.float_format = '{:.0f}'.format
-print (df.shape)
-print (df.columns)
-print (df.head(5))
-print (df.tail(5))
-#print (df.describe())
-"""

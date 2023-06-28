@@ -10,12 +10,6 @@
 #       in to mix (float/string) list 
 #       and rounds
 #       for the purpose of matplotlib plots
-"""
-# graph adjusters
-list_in   = range(0,101)  # example using range from 0:101
-round_num = 2
-divisor   = 10
-"""
 
 class GraphAdjustments:
     
@@ -48,7 +42,3 @@ class GraphAdjustments:
                     
         return float_round_list
         
-"""
-obj_GraphAdjustments = GraphAdjustments(list_in, round_num, divisor)
-x_list    = obj_GraphAdjustments.less_by_fuctor_x_dispaly()
-"""

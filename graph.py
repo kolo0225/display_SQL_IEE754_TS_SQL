@@ -16,50 +16,6 @@ import matplotlib.pyplot as plt
 #from ImportSQliteDF import ImportsqlitelDF
 from graph_adjustments import GraphAdjustments
 
-# ----------------- variables:
-"""
-# ImportSQliteDF:
-# ---------------
-db_name_in      = 'Application.RampRate_Trend1.1.sqlite'
-select_frase    = 'SELECT * from TblTrendData'
-col_name_list   = np.array(['timestamp','Spt','AutoSpt','FeedBack'])
-select_list     = np.array([0,1,1,1]) 
-# -
-"""
-
-# graph:
-# ------
-# colors
-#color0    = 'springgreen'
-#color1    = 'deepskyblue'
-#color2    = 'deeppink'
-#color3    = 'black'
-#color4    = 'gold'
-#color_list = np.array([color0,color1,color2,color3,color4])
-# label
-#label0    = 'Spt'
-#label1    = 'AutoSpt'
-#label2    = 'FeedBack'
-#label_list = np.array([label0, label1, label2])
-# label
-#title     = 'Ramp Rate data over time'
-#xlabel    = 'time'
-#ylabel    = 'percent'
-#title_list = np.array([title,xlabel,ylabel])
-# graph adjusters
-#round_num = 2
-# list_lenght/divisor = num_display
-#num_display = 20          # how mamy entries the x-axis will display for clarity
-# output file.png
-#output_graph_file = r'C:\Users\AE_Controls\Desktop\ramprate_test_data\ramp_rate_plot.png' 
-
-"""
-# ----------------- call classes
-# - imports df 
-obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list, select_list) 
-#df             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose time in timestamp
-df             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_count_sec()        # choose time in sec
-"""
 # ----------------------------------------
 
 class Display:
@@ -254,11 +210,3 @@ class Display:
         #plt.show()
         plt.close()
         # ============================================
-
-"""
-# multigraph 
-obj_Display = Display(df, color_list, label_list, title_list, round_num, num_display, output_graph_file)
-#obj_Display.x_val_based_on_TS_vals()                    # x in sec or TS
-obj_Display.x_val_based_on_index()                      # x in cycles
-obj_Display.multiple_line_plots()
-"""

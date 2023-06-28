@@ -1,6 +1,6 @@
                                
 							test parameters:
-                  			 ------------------
+                  			                ------------------
 
 1. Permanent Values: 
 ---------------------------
@@ -10,13 +10,12 @@ RampRate = 1 %
 2. Initial Conditions: 
 -------------------------------
 time_limit = not time restrictions
-Station01InputMapping.Station01PlantPrealSpt =  10
-PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt = 10
-InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk =
-	between 10 & 10.1
+this_is_the_name_of_the_1st_variable =  10
+this_is_the_name_of_the_2nd_variable = 10
+this_is_the_name_of_the_3rd_variable = between 10 & 10.1
 
 ** Note: 
-	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+	this_is_the_name_of_the_3rd_variable
 		needs to be stabilized for 
 		10000 ms
 		in order for the test to continue
@@ -25,37 +24,36 @@ InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFb
 3. Changing Conditions: 
 ------------------------------
 
-Station01InputMapping.Station01PlantPrealSpt =  15
+this_is_the_name_of_the_1st_variable =  15
 
 Time allowed for 
-	PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt 
+	this_is_the_name_of_the_2nd_variable 
 	to reach between 14.5 & 15.5 is:
 	5000 ms
 
 Enough time is provided for 
-	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+	this_is_the_name_of_the_3rd_variable
 	to reach value below (variable not tested):
-InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk =
-	 between 14.9 & 15.1
+this_is_the_name_of_the_3rd_variable = between 14.9 & 15.1
 
  Note: 
-	InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+	this_is_the_name_of_the_3rd_variable
 	needs to be stabilized for 10000 ms
 	in order for the test to continue
 
 4. Final Conditions:
 ----------------------------
 
-Station01InputMapping.Station01PlantPrealSpt =  0
+this_is_the_name_of_the_1st_variable =  0
 
 Time allowed for 
-	PlantRealPower.PlantLevelPrealSetpoints.PrealAutoSpt 
+	this_is_the_name_of_the_2nd_variable 
 	to reach between -0.5 & 0.5 is:
 	15000 ms
 
 ** Note: 
 	At this point the value of the 
-		InputConditioning.FeedbackCore_POI[PPCPersistentVariables.POIMeterInUse].PrealFbk 
+		this_is_the_name_of_the_3rd_variable
 		is irrelevant for the test
 
 

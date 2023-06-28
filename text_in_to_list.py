@@ -3,8 +3,6 @@
 # Purpose:
 #   it turns a file.txt in to list
 
-#file_text = 'RampUpDownTestDoc.txt'
-
 class FileInListConverter:
     
     def __init__(self,file_text):
@@ -20,5 +18,3 @@ class FileInListConverter:
 
         return list_1d
 
-#obj_FileInListConverter = FileInListConverter(file_text)
-#obj_FileInListConverter.file_in_list_converter()

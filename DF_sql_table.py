@@ -5,53 +5,8 @@
 import numpy as np
 import pandas as pd
 import sqlite3
-"""
-# files.py
-from ImportSQliteDF import ImportsqlitelDF
-"""
-# path
-#r"C:\ProgramData\CODESYS\CODESYSControlWinV3x64\94BCBDE7\PlcLogic\corrected***.sqlite"         
 
-# ####################################### universal variables #############################
-#
-
-# ------------- TEMP - ImportSQliteDF.py - VAR.---------- 
-"""
-# ----------------- variables:
-# ImportSQliteDF:
-# ---------------
-db_name_in      = 'Application.RampRate_Trend1.1.sqlite'
-select_frase    = 'SELECT * from TblTrendData'
-col_name_list   = np.array(['timestamp','Spt','AutoSpt','FeedBack'])
-select_list     = np.array([0,1,1,1]) 
-
-# ------------------------------------------------------------
-# DF_sql_table:
-# ---------------
-
-db_name_out       = 'corrected_RampRate_data.sqlite'
-table_name        = 'TblTrendData'                               # NEVER CHANGE
-table_str         = '''CREATE TABLE IF NOT EXISTS TblTrendData( 
-		               timestamp INTEGER PRIMARY KEY,
-		               Spt REAL,
-                       AutoSpt REAL,
-                       FeedBack REAL 
-	                  );''' 
-drop_str          = 'drop table if exists TblTrendData'         # NEVER CHANGE
-
-view              = ('''  
-	                  SELECT * FROM TblTrendData                # NEVER CHANGE
-                    ''')
-"""
-# ------------------------------------------------------------
-
-# #########################################################################################
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-# ----------------------------------------------------------------
-"""<-----------------|Start Comment|
-"""# <-----------------|End Comment|
-# b: DfSqlTable:
 
 class DfSqlTable: 
 
@@ -114,18 +69,3 @@ class DfSqlTable:
         conn.close()
 
 #--------------------------------------------------------
-"""
-# ==========> imports df 
-# - imports df 
-obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list, select_list) 
-df             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose time in timestamp
-#df            = obj_ImportsqlitelDF.modify_df_of_timestamp_to_count_sec()         # choose time in sec
-
-
-# ==========> 1b DfSqlTable
-obj_DfSqlTable  = DfSqlTable (db_name_out, table_name, table_str, df, drop_str, view )  
-
-#obj_DfSqlTable.create_connect_db()
-obj_DfSqlTable.create_table_populate()
-#obj_DfSqlTable.view_db()
-"""

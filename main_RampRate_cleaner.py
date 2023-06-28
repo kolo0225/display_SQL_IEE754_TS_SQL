@@ -35,23 +35,6 @@ from DirectoriesControl import DirectoryFileManager
 # Varibles need CHANGE @ ONLY ONCE:
 #----------------------------------
 # ----------------- variables:
-# NOTE:
-# The file "sftp_downloading_RampRate_files.ps1"
-#   need to be change for each test case
-# the 2 variables (from powershell) below 
-#   you can only change them from "sftp_downloading_RampRate_files.ps1"
-
-# ---> sftp_downloading_RampRate_files.ps1
-# $linux_file  = '/var/opt/codesys/PlcLogic/trend/Application.RampRate_Trend1.1.sqlite'
-# $win_path    = 'C:\Users\AE_Controls\Desktop\ramprate_test_data'
-# name of //sftp_downloading_*******_files.ps1" 
-# NOTE: both files.ps1 have to be at the same directory
-dir_pwsh         = os.getcwd()                                                   # NEVER CHANGE
-file_ps1_1       = "\\sftp_downloading_RampRate_files.ps1"        
-# --------------------------------------------------------------
-
-# delay variable to insure sqlite has been imported
-delay = 5; # sec                                               # NEVER CHANGE
 
 # ---> ImportSQliteDF:
 #      ---------------
@@ -191,28 +174,9 @@ dir_name             = '\\RampRateTest_'
 list_tobe_copied     = ['RampRate_data.csv', 'corrected_RampRate_data.sqlite', 'RampRateTestResults.pdf', 'PRealRampRataIncrDecrTest.html']
 list_tobe_invoked    = ['RampRateTestResults.pdf', 'PRealRampRataIncrDecrTest.html']
 
-# --------------------------------------------------------------
-# NOTE:
-# The file "sftp_ls_RampRate_sqliteDeleter.ps1"
-#   need to be change for each test case
-# the variable (from powershell) below 
-#   you can only change them from "sftp_ls_RampRate_sqliteDeleter.ps1"
-# name of //sftp_ls_*******_sqliteDeleter.ps1" 
-file_ps1_2       = "\\sftp_ls_RampRate_sqliteDeleter.ps1"  
-# --------------------------------------------------------------
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # ########################################################################################
 # ----------------- call classes
-"""
-# this code is not provided here and is not needed for this example
-# powershell files "sftp_downloading_RampRate_files.ps1"
-# file -> should should be different for each test case
-pwsh_path_file_1 = dir_pwsh+file_ps1_1
-subprocess.Popen(["powershell.exe",pwsh_path_file_1], stdout=sys.stdout)         
 
-# add a delay to insure sqlite is imported
-time.sleep(delay)
-"""
 # - imports df 
 obj_ImportsqlitelDF  = ImportsqlitelDF ( db_name_in, select_frase, col_name_list, select_list) 
 df_ts             = obj_ImportsqlitelDF.modify_df_of_timestamp_to_time()             # choose time in timestamp (use both)
@@ -254,22 +218,15 @@ Story = obj_ParagraphTCOStory.bodyNimages()
 obj_PDF_Buider = PDF_Buider(file_out)
 doc = obj_PDF_Buider.multiBuild(Story)
 # -
+
 """
 # uncomment if you wish to create a TimeStamp_file with the results in
 # ---
 # DirectoriesControl
-obj_DirectoryFileManager = DirectoryFileManager(dir_name, list_tobe_copied, list_tobe_invoked) 
+obj_DirectoryFileManager = DirectoryFileManager(dir_name, list_tobe_copied, list_tobe_invoked)
 obj_DirectoryFileManager.invoke_files_selected()
 obj_DirectoryFileManager.zip_directory()
 # -
-"""
-"""
-# this code is not provided here and is not needed for this example
-# ---
-# powershell files "sftp_ls_RampRate_sqliteDeleter.ps1"
-# file -> should should be different for each test case
-pwsh_path_file_2 = dir_pwsh+file_ps1_2
-subprocess.Popen(["powershell.exe",pwsh_path_file_2], stdout=sys.stdout)         # NEVER CHANGE
 """
 # ----------------- Display 
 
@@ -278,4 +235,3 @@ print (df_ts.shape)
 print (df_ts.columns)
 print (df_ts.head(20))
 print (df_ts.tail(10))
-#print (df.describe())
